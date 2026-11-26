@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10231d"><title>Plant Observatory</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header><div class="brand"><span class="mark">◒</span><div>PLANT OBSERVATORY<small>SPRESENSE · FIELD MONITOR</small></div></div><span id="clock"></span></header>
+<section class="intro"><div><p class="eyebrow">A CLOSER LOOK AT YOUR PLANT</p><h1>Small signals.<br> A living picture.</h1><p class="muted">Soil, air and sound, together.</p></div><div class="plant" aria-hidden="true">❧</div></section>
+<section class="connection"><div><span id="dot" class="dot"></span><strong id="connection">Not connected</strong><p id="lastUpdate">Connect your Spresense to see live readings.</p></div><button id="connect" class="primary">Connect device ↗</button><button id="disconnect" hidden>Disconnect</button></section>
+<p id="notice" role="status" aria-live="polite">Disconnect nRF Connect before connecting here.</p>
+<div class="section-title"><h2>Environment</h2><span>Tap a card to explore</span></div>
+<section class="cards" aria-label="Sensor readings">
+<button class="card selected" data-key="soil_pct" style="--accent:#a9d77b"><span class="card-label">01 / SOIL MOISTURE <span>↗</span></span><div class="reading"><b id="soil_pct">—</b><span>%</span></div><p id="soilMeta">Estimated voltage — · ADC —</p><svg class="spark" data-spark="soil_pct" viewBox="0 0 260 50" aria-hidden="true"></svg><small>Calibrated relative wetness</small></button>
+<button class="card" data-key="temp_C" style="--accent:#efb886"><span class="card-label">02 / TEMPERATURE <span>↗</span></span><div class="reading"><b id="temp_C">—</b><span>°C</span></div><p>Air temperature</p><svg class="spark" data-spark="temp_C" viewBox="0 0 260 50" aria-hidden="true"></svg><small>SCD40 sensor</small></button>
+<button class="card" data-key="rh_pct" style="--accent:#83c9d9"><span class="card-label">03 / HUMIDITY <span>↗</span></span><div class="reading"><b id="rh_pct">—</b><span>%</span></div><p>Relative humidity</p><svg class="spark" data-spark="rh_pct" viewBox="0 0 260 50" aria-hidden="true"></svg><small>SCD40 sensor</small></button>
+<button class="card" data-key="co2_ppm" style="--accent:#b6a5e2"><span class="card-label">04 / CARBON DIOXIDE <span>↗</span></span><div class="reading"><b id="co2_ppm">—</b><span>ppm</span></div><p>CO₂ concentration</p><svg class="spark" data-spark="co2_ppm" viewBox="0 0 260 50" aria-hidden="true"></svg><small>SCD40 sensor</small></button>
+</section>
+<section class="panel history"><div class="section-title"><div><p class="eyebrow">THE LAST LITTLE WHILE</p><h2 id="chartTitle">Soil moisture</h2></div><select id="range" aria-label="History duration"><option value="300">5 minutes</option><option value="1800">30 minutes</option><option value="3600">1 hour</option></select></div><div class="chart-wrap"><svg id="chart" viewBox="0 0 640 230" role="img" aria-label="Sensor history graph"></svg><p id="emptyChart">Your history begins with the first reading.</p></div><div class="chart-summary"><span id="minimum">MIN —</span><span id="maximum">MAX —</span><span>PHONE SESSION HISTORY</span></div></section>
+<section class="panel"><div class="section-title"><div><p class="eyebrow">LISTEN TO THE SURROUNDINGS</p><h2>Four microphones</h2></div><span id="audioState" class="pill">Off</span></div><div id="meters" class="meters"></div><p class="muted" id="micHint">Open SOUND on the TFT to start listening.</p><small>Levels are dBFS, not calibrated sound pressure. Labels follow board channel order.</small></section>
+<section class="insect"><span class="insect-icon">⌁</span><div><h2>Insect identification</h2><p>No classifier installed yet. Sound levels do not identify an insect.</p></div><span class="pill">Not active</span></section>
+<footer><button id="export">Export readings ↓</button><button id="demo">Preview with demo data</button><p>Readings stay in this page’s memory. Export before closing.<br>Keep this page open and your phone near the board.</p><details><summary>Connection help</summary><p>Use Chrome on Android and open this dashboard over HTTPS. Allow Bluetooth / Nearby devices when prompted. Choose SPR-PERIPHERAL. Disconnect other Bluetooth apps first. If the board is not listed, restart it and scan again.</p><p>This dashboard displays telemetry; it does not control the TFT or start recordings. Soil percentage is relative to your dry/wet calibration, not volumetric water content. Existing TFT history and SD files are not transferred.</p></details></footer>
+</main><script src="protocol.js"></script><script src="app.js"></script>
+</body></html>
